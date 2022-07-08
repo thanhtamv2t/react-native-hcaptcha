@@ -128,6 +128,10 @@ const Hcaptcha = ({
             // NOTE: disabled for simplicity.
             // window.ReactNativeWebView.postMessage("open");
             console.log("challenge opened");
+            const loader = document.querySelector("#c98-loader")
+            if(loader){
+              loader.remove()
+            }
           };
           var onDataExpiredCallback = function(error) { window.ReactNativeWebView.postMessage("expired"); };
           var onChalExpiredCallback = function(error) { window.ReactNativeWebView.postMessage("cancel"); };
@@ -159,9 +163,11 @@ const Hcaptcha = ({
             }
             return opts;
           };
+
         </script>
       </head>
       <body style="background-color: ${backgroundColor};">
+          <img id="c98-loader" src="https://coin98.s3.ap-southeast-1.amazonaws.com/loader.gif" style="width: 60px; height: 60px; position: fixed; top: 50%; left:50%; transform: translate(-50%,-50%);"/>
         <div id="submit"></div>
       </body>
       </html>`,
