@@ -58,6 +58,7 @@ const Hcaptcha = ({
   backgroundColor,
   theme,
   rqdata,
+  customLoader = null
 }) => {
   const apiUrl = buildHcaptchaApiUrl(siteKey, languageCode, theme);
 
@@ -171,7 +172,7 @@ const Hcaptcha = ({
   const renderLoading = useCallback(
     () => (
       <View style={[styles.loadingOverlay]}>
-        <ActivityIndicator size="large" color={loadingIndicatorColor} />
+        {customLoader || <ActivityIndicator size="large" color={loadingIndicatorColor} />}
       </View>
     ),
     [loadingIndicatorColor]
